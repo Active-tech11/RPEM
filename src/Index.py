@@ -102,17 +102,3 @@ if __name__ == '__main__' :
     cal_PrecisionRA_and_AUC ( G, target_edges)
 
     #cal_PrecisionJA_and_AUC( G , target_edges)
-
-
-
-""" #这里读取的是删除目标边后的处理文件
-    # 计算RA相似度
-    calculate_RA ( G )"""
-"""# 计算Jaccard相似度
-    jaccard_similarities = calculate_jaccard_similarity ( G )
-
-    # 输出前20个节点对
-    print ( "前60个节点对及其Jaccard相似度：" )
-    for u , v , sim in jaccard_similarities[:100] :
-        print ( f"({u}, {v}): {sim}" )
-"""
