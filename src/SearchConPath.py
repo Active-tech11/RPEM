@@ -9,9 +9,9 @@ def read_common_neighbors_from_csv(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split('\t')
-            edge_nodes = parts[0].split(',')  # 分割 '14,18' 为 '14' 和 '18'
-            edge = (int(edge_nodes[0]), int(edge_nodes[1]))  # 将分割后的字符串转换为整数
-            neighbors = set(map(int, parts[1:]))  # 将邻居节点转换为整数
+            edge_nodes = parts[0].split(',') 
+            edge = (int(edge_nodes[0]), int(edge_nodes[1]))  
+            neighbors = set(map(int, parts[1:]))  
             common_neighbors_dict[edge] = neighbors
     return common_neighbors_dict
 
@@ -29,17 +29,17 @@ def find_three_order_common_neighbors(G , node1 , node2) :
     print ( f"{node2}的三阶邻居",neighbors2 )
     neighbors1.discard ( node1 )
     neighbors2.discard ( node2 )
-    # 返回两者的交集
+   
     # print ( neighbors1 & neighbors2 )
     return neighbors1 & neighbors2
 
 
 def valid_paths(G , node1 , node2 , common_neighbors , max_path_length) :
-    # 创建一个列表来存储所有有效路径
+   
     valid_paths_list = []
 
     for path in nx.all_simple_paths ( G , source = node1 , target = node2 , cutoff = max_path_length ) :
-        # 检查路径中是否至少包含一个三阶公共邻居
+       
         if any ( neighbor in path for neighbor in common_neighbors ) :
             valid_paths_list.append ( path )
 
