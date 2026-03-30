@@ -10,7 +10,7 @@ net = Network(notebook=True)
 
 
 for node in range(1, max(dolphins_data.max())+1):
-    net.add_node(node, label=str(node))  # 节点编号作为标签
+    net.add_node(node, label=str(node))  
 
 
 for edge in edges:
