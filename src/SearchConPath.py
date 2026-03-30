@@ -55,7 +55,7 @@ if __name__ == "__main__":
     G.add_edges_from(edges)
 
     target_edges = read_edges_from_csv( 'DataSet/target_edges.csv' )
-    #最大长度
+   
     max_path_length = 6
     common_neighbors_file = 'DataSet/common_neighbors.csv'
     common_neighbors_dict = read_common_neighbors_from_csv(common_neighbors_file)
