@@ -15,7 +15,7 @@ def RA(G , ebunch) :
 def calculate_RA(G) :
     ebunch = list ( nx.non_edges ( G ) )
     ra_values = RA ( G , ebunch )
-    # 按RA指标值降序排列
+    
     sorted_ra_values = sorted ( ra_values.items () , key = lambda item : item[1] , reverse = True )
     print ( "节点对及其RA相似度：" )
     for i in range ( min ( 20 , len ( sorted_ra_values ) ) ) :
