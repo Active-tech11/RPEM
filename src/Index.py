@@ -10,7 +10,7 @@ def RA(G , ebunch) :
         RA_dic[each] = a
     return RA_dic
 
-#RA的计算范围应该是G_perturb
+
 
 def calculate_RA(G) :
     ebunch = list ( nx.non_edges ( G ) )
@@ -23,16 +23,16 @@ def calculate_RA(G) :
     return sorted_ra_values
 
 
-# Jaccard指标
+
 def Calculate_jaccard(G) :
-    # 获取图中所有未直接连接的节点对
+   
     non_edges = list ( nx.non_edges ( G ) )
 
-    # 计算每对节点的Jaccard系数
+   
     jaccard_similarities = [(u , v , len ( set ( G[u] ) & set ( G[v] ) ) / len ( set ( G[u] ) | set ( G[v] ) )) for
                             u , v in non_edges]
 
-    # 按相似度降序排列
+    
     jaccard_similarities.sort ( key = lambda x : x[2] , reverse = True )
 
     return jaccard_similarities
@@ -50,7 +50,7 @@ def cal_PrecisionRA_and_AUC(G , target_edges) :
     raTest = [each[0] for each in topk_preds[:len ( target_edges )]]
     items = set ( raTest ) & set ( target_edges )
     precision = float ( len ( items ) ) / len ( target_edges )
-    #用图中不存在的边求AUC值
+   
     edgesNotexit = set(nx.non_edges (G))
     AUC = 0.0
     for k in target_edges :
@@ -66,7 +66,7 @@ def cal_PrecisionRA_and_AUC(G , target_edges) :
     return precision , AUC
 
 
-# Precision（Jaccard） & AUC指标
+
 def cal_PrecisionJA_and_AUC(G, target_edges ) :
     preds =Calculate_jaccard(G)
     dic = dict ()
@@ -76,7 +76,7 @@ def cal_PrecisionJA_and_AUC(G, target_edges ) :
     raTest = [each[0] for each in topk_preds[:len ( target_edges )]]
     items = set ( raTest ) & set ( target_edges )
     precision = float ( len ( items ) ) / len ( target_edges )
-    #这个集合应该是全部的边-选中的目标边-选中的被删除的边
+   
     #edgesNotexit = set ( complete_edges ) - set ( perturb.edges ) - set ( test_edges )
     edgesNotexit = set(nx.non_edges (G))
     auc = 0.0
@@ -91,14 +91,3 @@ def cal_PrecisionJA_and_AUC(G, target_edges ) :
     return precision , auc
 
 
-
-
-if __name__ == '__main__' :
-    edges = pd.read_csv ( 'DataSet\dolphins_perturb.csv' , header = None , sep = '\t' ).values
-    G = nx.Graph ()
-    G.add_edges_from ( edges )
-    target_edges = pd.read_csv ( 'DataSet\\target_edges.csv' , header = None , sep = '\t').values
-
-    cal_PrecisionRA_and_AUC ( G, target_edges)
-
-    #cal_PrecisionJA_and_AUC( G , target_edges)
