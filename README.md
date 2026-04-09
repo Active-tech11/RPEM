@@ -6,6 +6,8 @@ Concealing certain relationships is essential for privacy and security. Simply r
 ### Supported Datasets
 Most datasets can be obtained on this website：
 https://data.worldbank.org/
+## Running the model
+To apply the method we have proposed, please use the main function to execute it.
 ## Citation
 If you find our work useful, please cite it using the following BibTeX entry:
 ```
